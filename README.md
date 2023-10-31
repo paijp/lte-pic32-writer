@@ -1,5 +1,9 @@
 # lte-pic32-writer
 
+## IMPORTANT.
+- Don't use the sendto.txt file in this version(0.0.1).
+- Please see the security advisories.
+
 ## How to build.
 ### PIC32MX
 
