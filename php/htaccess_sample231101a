@@ -1,0 +1,11 @@
+<Files ~ "^log.*[.]txt$">
+deny from all
+</Files>
+
+<Files download.hex>
+deny from all
+</Files>
+
+<Files sendto.txt>
+deny from all
+</Files>
