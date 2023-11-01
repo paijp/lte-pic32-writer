@@ -1,8 +1,10 @@
 <?php
 
-#$urlz = "https://yourteam.zulipchat.com/api/v1/external/slack_incoming?api_key=@@@@yourkey@@@@";
-#$urlz .= "&stream=log";
-#date_default_timezone_set("Asia/Tokyo");
+$urlz = "";
+$path_mkdir = "";
+$path_hex = "";
+$path_log = "";
+$path_sendto = "";
 
 include("env.php");
 
@@ -12,16 +14,20 @@ if (($imei = @$_SERVER["HTTP_X_SORACOM_IMEI"]) === null)
 if (!preg_match('/^[0-9A-Fa-f]+$/', $imei))
 	die();
 
-if (is_dir($imei))
-	;
-else if (file_exists($imei))
-	die();
-else
-	mkdir($imei, 0770);
-
+if ($path_mkdir != "") {
+	$path = sprintf($path_mkdir, $imei);
+	if (is_dir($path))
+		;
+	else if (file_exists($path))
+		die();
+	else
+		mkdir($path, 0770);
+}
 
 $sendto = "";
-if (is_readable($fn = $imei."/sendto.txt"))
+if ($path_sendto == "")
+	;
+else if (is_readable($fn = sprintf($path_sendto, $imei)))
 	$sendto = trim(file_get_contents($fn));
 
 
@@ -49,8 +55,10 @@ function	send($s = "", $topic = "download", $url = "")
 
 
 if (@$_GET["p"] === null) {
+	if ($path_log == "")
+		die();
 	$a = json_decode(file_get_contents("php://input"), true);
-	file_put_contents("{$imei}/log".date("ymd").".txt", $s = base64_decode(@$a["payload"]), FILE_APPEND);
+	file_put_contents(sprintf($path_log, $imei), $s = base64_decode(@$a["payload"]), FILE_APPEND);
 	if ($sendto == "")
 		send(preg_replace('/[^\012\040-\176]+/', '?', $s), "log-{$imei}", $urlz);
 	else
@@ -95,7 +103,7 @@ class	writebuf {
 $writebuflist = array();
 
 
-if (!is_readable($fn = "{$imei}/download.hex"))
+if (!is_readable($fn = sprintf($path_hex, $imei)))
 	die();
 
 $addrh = 0;
@@ -138,6 +146,7 @@ if ((0)) {
 					if (floor($pos++ / $pagesize) == $page)
 						$s .= $obj->put();
 				}
+#send("download: #{$page}/{$lastpage} len(".strlen($s).") ".sha1($content));
 send("download: #{$page} len(".strlen($s).") ".sha1($content)." imei({$imei})", "download", $urlz);
 				header("Content-Length: ".strlen($s));
 				header("Content-Type: application/octet-stream");
