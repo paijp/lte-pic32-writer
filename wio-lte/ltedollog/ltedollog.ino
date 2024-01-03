@@ -36,6 +36,74 @@
 #endif
 
 
+/*jp.pa-i/html
+<p><a href="https://github.com/paijp/diagram-in-comment">How to generate this?</a></p>
+*/
+/* generated HTML: https://paijp.github.io/lte-pic32-writer/ltedollog.html */
+
+/*jp.pa-i.cir/map32mx2-28
+PGD	RPB10	PGED2	UTX2
+PGC	PGEC2
+*/
+
+/*jp.pa-i/html
+<hr />
+*/
+
+/*jp.pa-i.cir/cir dip28 PIC32MX270F256B
+22(442{r10k}2[[3V3])2[MCLR]2{c104}2[[G]
+2
+2
+2
+2
+2
+2
+22[[G]
+2
+2
+2
+2
+22[[3V3]2{c106}2[[G]
+2
+8
+8
+8
+8
+888[[G]
+88{c106}8[[G]
+88[PGD]
+88[PGC]
+88[[3V3]
+8
+8
+8
+88[[G]
+88[[3V3]8{c104}8[[G]
+*/
+
+/*jp.pa-i.cir/cir sip5 ICSP
+22[MCLR]
+22[[3V3]
+22[[G]
+22[PGD]
+22[PGC]
+*/
+
+/*jp.pa-i.cir/cir sip4 WIO_LTE_UART
+22[[LTE_G]2[G]
+22[[LTE_3V3]
+22[LTE_TX]2[MCLR]
+22[LTE_RX]2[PGD]
+*/
+
+/*jp.pa-i.cir/cir sip4 WIO_LTE_D20
+22[[LTE_G]2[G]
+22[[LTE_3V3]
+22[LTE_D19]2[PGD]
+22[LTE_D20]2[PGC]
+*/
+
+
 #include	<WioLTEforArduino.h>
 
 WioCellular	Wio;

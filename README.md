@@ -29,9 +29,12 @@
 
 - WioLTE:TX -> PIC32MX:MCLR
 - WioLTE:RX <- PIC32MX:PGED2(=RPB10=UTX2)
-	- For log. Not required.
+	- For logging.
+	- Not required.
 - WioLTE:D19 -> PIC32MX:PGED2
 - WioLTE:D20 -> PIC32MX:PGEC2
+
+- https://paijp.github.io/lte-pic32-writer/ltedollog.html
 
 ## setup
 

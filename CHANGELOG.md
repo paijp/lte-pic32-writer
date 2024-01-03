@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Add a circuit diagram.
 
 ## [0.0.3] - 2023-11-01 [YANKED]
 ### Security
