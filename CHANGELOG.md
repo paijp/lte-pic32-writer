@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - Add a circuit diagram.
+- Add pic/bootleader_nostartup.hex.
 
 ## [0.0.3] - 2023-11-01 [YANKED]
 ### Security
